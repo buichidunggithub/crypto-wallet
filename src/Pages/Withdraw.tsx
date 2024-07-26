@@ -4,6 +4,7 @@ import { FaArrowUp, FaArrowDown, FaClock, FaCopy, FaQrcode, FaCog, FaArrowLeft }
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Coin } from '../types';
 import Modal from 'react-modal';
+import Transactions from './Transactions';
 
 const Withdraw: React.FC = () => {
   const [recipientAddress, setRecipientAddress] = useState('');
@@ -74,7 +75,7 @@ const Withdraw: React.FC = () => {
           <FaCog className="text-yellow-500" size={24} />
         </button> */}
       </div>
-      <div className="flex justify-around mb-4">
+      {/* <div className="flex justify-around mb-4">
         <button onClick={() => handleSell(coin)} className={`flex flex-col items-center focus:outline-none ${location.pathname === '/deposit' ? 'opacity-50' : ''}`}>
           <FaArrowUp className="text-yellow-500" size={32} />
           <span className="mt-2">Send</span>
@@ -87,7 +88,7 @@ const Withdraw: React.FC = () => {
           <FaClock className="text-yellow-500" size={32} />
           <span className="mt-2">Transactions</span>
         </button>
-      </div>
+      </div> */}
       <div className="mb-4">
         <h3 className="text-lg font-semibold">Available Balance</h3>
         <div className="text-4xl font-bold">0.8458 BTC</div>
@@ -140,6 +141,8 @@ const Withdraw: React.FC = () => {
         <button onClick={handleSend} className={`flex-1 ${amount ? 'bg-yellow-500' : 'bg-gray-500 cursor-not-allowed'} text-black font-bold py-2 px-4 rounded focus:outline-none`} disabled={!amount}>Send</button>
         <button onClick={handleReceive} className="flex-1 bg-gray-800 text-white font-bold py-2 px-4 rounded">Receive</button>
       </div>
+
+      <Transactions/>
 
       <Modal
         isOpen={isModalOpen}

@@ -30,27 +30,6 @@ const CoinList: React.FC<CoinListProps> = ({ coins, balance }) => {
     <div className="w-full mx-auto">
       {/* <h1 className="text-2xl font-bold mb-4 text-center">Crypto Wallet</h1> */}
 
-      <div className="bg-gray-900 text-white p-4 mb-6 rounded-lg shadow-md">
-        <div className="flex justify-between items-center">
-          <div>
-            <h2 className="text-xl font-bold">Tổng số dư</h2>
-            <p className="text-3xl font-bold">${balance.toFixed(2)}</p>
-          </div>
-          <button
-            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-            onClick={handleDeposit}
-          >
-            Nạp tiền
-          </button>
-          <button
-            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-            onClick={handleWithdraw}
-          >
-            Rút tiền
-          </button>
-        </div>
-      </div>
-
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
           <thead>

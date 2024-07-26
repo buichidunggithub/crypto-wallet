@@ -34,6 +34,13 @@ const Header: React.FC = () => {
 
   const navigate = useNavigate();
 
+  const handleConnectWallet = () => {
+    // Đây là nơi bạn sẽ tích hợp với ví tiền điện tử
+    // Ví dụ: MetaMask, WalletConnect, v.v.
+    alert('Kết nối ví đang được thực hiện...');
+    // Bạn có thể gọi các API hoặc SDK của ví để thực hiện kết nối
+  };
+
   return (
     <header className="bg-gray-800 text-white p-4 flex justify-between items-center">
       <div className="flex items-center" ref={menuRef}>
@@ -58,35 +65,40 @@ const Header: React.FC = () => {
         </button>
         <h1 onClick={() => navigate('/')} className="text-xl font-bold">Crypto Wallet</h1>
       </div>
-      <div className="relative" ref={settingsRef}>
-        <button
-          onClick={toggleSettings}
-          className="focus:outline-none focus:ring"
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M12 1v2m0 18v2m9-10h-2m-16 0H1m16.071 8.071l-1.414-1.414m-11.314 0l-1.414 1.414M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-            ></path>
-          </svg>
+      <div className="flex space-x-4">
+        <button onClick={handleConnectWallet} className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-full">
+          Connect Wallet
         </button>
-        {isSettingsOpen && (
-          <div className="absolute right-0 mt-2 w-48 bg-white text-black rounded-md shadow-lg z-50">
-            <a href="#" className="block px-4 py-2 hover:bg-gray-200">FAQ</a>
-            <a href="#" className="block px-4 py-2 hover:bg-gray-200">About Us</a>
-            <a href="#" className="block px-4 py-2 hover:bg-gray-200">Privacy Policy</a>
-            <a href="#" className="block px-4 py-2 hover:bg-gray-200">Terms & Condition</a>
-            <a href="#" className="block px-4 py-2 hover:bg-gray-200">Logout</a>
-          </div>
-        )}
+        <div className="flex" ref={settingsRef}>
+          <button
+            onClick={toggleSettings}
+            className="focus:outline-none focus:ring"
+          >
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M12 1v2m0 18v2m9-10h-2m-16 0H1m16.071 8.071l-1.414-1.414m-11.314 0l-1.414 1.414M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              ></path>
+            </svg>
+          </button>
+          {isSettingsOpen && (
+            <div className="absolute right-0 mt-2 w-48 bg-white text-black rounded-md shadow-lg z-50">
+              <a href="#" className="block px-4 py-2 hover:bg-gray-200">FAQ</a>
+              <a href="#" className="block px-4 py-2 hover:bg-gray-200">About Us</a>
+              <a href="#" className="block px-4 py-2 hover:bg-gray-200">Privacy Policy</a>
+              <a href="#" className="block px-4 py-2 hover:bg-gray-200">Terms & Condition</a>
+              <a href="#" className="block px-4 py-2 hover:bg-gray-200">Logout</a>
+            </div>
+          )}
+        </div>
       </div>
       {isMenuOpen && (
         <div className="absolute top-16 left-0 w-48 bg-white text-black rounded-md shadow-lg z-50">

@@ -46,12 +46,12 @@ const Transactions: React.FC = () => {
   };
 
   return (
-    <div className="p-4 w-full h-full bg-gray-900 text-white shadow-md rounded-lg md:max-w-xl md:mx-auto lg:max-w-2xl lg:p-6">
+    <div className="p-4 bg-gray-900 text-white shadow-md rounded-lg md:max-w-xl md:mx-auto lg:max-w-2xl lg:p-6">
       <div className="mb-4">
         <div className="flex justify-between items-center mb-4">
-          <button onClick={handleBack} className="focus:outline-none">
+          {/* <button onClick={handleBack} className="focus:outline-none">
             <FaArrowLeft className="text-yellow-500" size={24} />
-          </button>
+          </button> */}
           <h2 className="text-xl font-bold mb-2">Transactions</h2>
           {/* <button className="focus:outline-none">
             <FaCog className="text-yellow-500" size={24} />
