@@ -18,14 +18,6 @@ const CoinList: React.FC<CoinListProps> = ({ coins, balance }) => {
     navigate('/withdraw', { state: { coin } });
   };
 
-  const handleDeposit = () => {
-    navigate('/deposit-funds');
-  };
-
-  const handleWithdraw = () => {
-    navigate('/withdraw-funds');
-  };
-
   return (
     <div className="w-full mx-auto">
       {/* <h1 className="text-2xl font-bold mb-4 text-center">Crypto Wallet</h1> */}

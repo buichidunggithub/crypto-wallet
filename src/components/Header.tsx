@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import WalletModal from './WalletModal';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -33,13 +34,9 @@ const Header: React.FC = () => {
   }, [isMenuOpen, isSettingsOpen]);
 
   const navigate = useNavigate();
-
-  const handleConnectWallet = () => {
-    // Đây là nơi bạn sẽ tích hợp với ví tiền điện tử
-    // Ví dụ: MetaMask, WalletConnect, v.v.
-    alert('Kết nối ví đang được thực hiện...');
-    // Bạn có thể gọi các API hoặc SDK của ví để thực hiện kết nối
-  };
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   return (
     <header className="bg-gray-800 text-white p-4 flex justify-between items-center">
@@ -63,10 +60,10 @@ const Header: React.FC = () => {
             ></path>
           </svg>
         </button>
-        <h1 onClick={() => navigate('/')} className="text-xl font-bold">Crypto Wallet</h1>
+        <h1 onClick={() => navigate('/')} className="text-md font-bold">Crypto Wallet</h1>
       </div>
       <div className="flex space-x-4">
-        <button onClick={handleConnectWallet} className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-full">
+        <button onClick={openModal} className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-full">
           Connect Wallet
         </button>
         <div className="flex" ref={settingsRef}>
@@ -106,6 +103,7 @@ const Header: React.FC = () => {
           <a href="/account" className="block px-4 py-2 hover:bg-gray-200">Account</a>
         </div>
       )}
+      <WalletModal isOpen={isModalOpen} onClose={closeModal} />
     </header>
   );
 };

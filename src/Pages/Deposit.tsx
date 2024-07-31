@@ -49,11 +49,14 @@ const Deposit: React.FC = () => {
   };
 
   return (
-    <div className="p-4 w-full bg-gray-900 text-white shadow-md rounded-lg md:max-w-xl md:mx-auto lg:max-w-2xl lg:p-6">
+    <div className="p-4 w-full bg-gray-900 text-white shadow-md rounded-lg min-h-screen">
       <div className="flex justify-between items-center mb-4">
-        <button onClick={handleBack} className="focus:outline-none">
-          <FaArrowLeft className="text-yellow-500" size={24} />
-        </button>
+        <div className='flex'>
+          <button onClick={handleBack} className="focus:outline-none">
+            <FaArrowLeft className="text-yellow-500" size={24} />
+          </button>
+          <div className='ml-4'>Buy</div>
+        </div>
         <h2 className="text-xl font-bold">{coin.name}</h2>
         {/* <button className="focus:outline-none">
           <FaCog className="text-yellow-500" size={24} />

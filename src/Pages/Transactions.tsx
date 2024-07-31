@@ -46,7 +46,7 @@ const Transactions: React.FC = () => {
   };
 
   return (
-    <div className="p-4 bg-gray-900 text-white shadow-md rounded-lg md:max-w-xl md:mx-auto lg:max-w-2xl lg:p-6">
+    <div className="p-4 w-full bg-gray-900 text-white shadow-md rounded-lg min-h-screen">
       <div className="mb-4">
         <div className="flex justify-between items-center mb-4">
           {/* <button onClick={handleBack} className="focus:outline-none">
@@ -58,32 +58,36 @@ const Transactions: React.FC = () => {
           </button> */}
         </div>
         
-        <div className="flex mb-4">
-          <input
-            type="text"
-            placeholder="Search by ID"
-            className="flex-grow p-2 bg-gray-800 rounded-md text-white mr-2"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-          <input
-            type="date"
-            className="p-2 bg-gray-800 rounded-md text-white mr-2"
-            value={fromDate}
-            onChange={(e) => setFromDate(e.target.value)}
-          />
-          <input
-            type="date"
-            className="p-2 bg-gray-800 rounded-md text-white mr-2"
-            value={toDate}
-            onChange={(e) => setToDate(e.target.value)}
-          />
-          <button
-            className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded focus:outline-none"
-            onClick={handleSearch}
-          >
-            Search
-          </button>
+        <div className="mb-4">
+          <div className='flex mb-4'>
+            <input
+              type="date"
+              className="flex-grow p-2 bg-gray-800 rounded-md text-white mr-2"
+              value={fromDate}
+              onChange={(e) => setFromDate(e.target.value)}
+            />
+            <input
+              type="date"
+              className="flex-grow p-2 bg-gray-800 rounded-md text-white"
+              value={toDate}
+              onChange={(e) => setToDate(e.target.value)}
+            />
+          </div>
+          <div className='flex'>
+            <input
+              type="text"
+              placeholder="Search by ID"
+              className="flex-grow p-2 bg-gray-800 rounded-md text-white mr-2"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            <button
+              className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded focus:outline-none"
+              onClick={handleSearch}
+            >
+              Search
+            </button>
+          </div>
         </div>
       </div>
       <div className="space-y-4">

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import PaymentChoices from '../components/PaymentChoices';
+import { ModalConfirm } from '../components/ModalConfirm';
 
 const WithdrawFunds: React.FC = () => {
   const [amount, setAmount] = useState<number | undefined>();
@@ -12,52 +14,49 @@ const WithdrawFunds: React.FC = () => {
     });
   };
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+
   return (
-    <div className="p-4 w-full h-full bg-gray-900 text-white shadow-md rounded-lg md:max-w-xl md:mx-auto lg:max-w-2xl lg:p-6">
+    <div className="p-8 w-full bg-gray-900 text-white shadow-md rounded-lg">
       <div className="flex justify-between items-center mb-4">
         <button onClick={() => navigate(-1)} className="focus:outline-none">
           <span className="text-yellow-500 text-2xl">&larr;</span>
         </button>
-        <h1 className="text-xl font-bold">Rút tiền</h1>
+        <h1 className="text-xl font-bold">Chọn phương thức thanh toán</h1>
         <button className="focus:outline-none">
           <span className="text-yellow-500 text-xl">?</span>
         </button>
       </div>
 
-      <div className="mb-6">
-        <label className="block text-gray-400 mb-2">Số tiền cần rút</label>
-        <input
-          type="number"
-          className="w-full p-2 bg-gray-800 rounded-md text-white mb-4"
-          value={amount !== undefined ? amount : ''}
-          onChange={(e) => setAmount(parseFloat(e.target.value))}
-          placeholder="$ Số tiền cần rút"
-        />
-      </div>
-
-      <div className="mb-6">
-        <label className="block text-gray-400 mb-2">Chọn tài khoản ngân hàng</label>
-        <div className="bg-gray-800 rounded-md p-2 border border-yellow-500">
-          <select
-            className="w-full bg-gray-800 text-white focus:outline-none"
-            value={selectedBank}
-            onChange={(e) => setSelectedBank(e.target.value)}
-          >
-            <option value="">Chọn ngân hàng</option>
-            <option value="Vietcombank">Vietcombank - XXXX-XXXXXX-VCB</option>
-            <option value="Techcombank">Techcombank - XXXX-XXXXXX-TCB</option>
-            <option value="ACB">ACB - XXXX-XXXXXX-ACB</option>
-            {/* Thêm các tùy chọn ngân hàng khác tại đây */}
-          </select>
+      <div className="my-10 justify-center">
+        <div className='flex justify-center'>
+          <span className="text-gray-400 mb-2">Bạn sẽ nhận được</span>
+        </div>
+        <div className='flex justify-center'>
+          <span className="text-gray-400 mb-2 text-5xl"> 999,220 </span>
         </div>
       </div>
 
-      <button
-        className={`w-full text-white font-bold py-2 px-4 rounded focus:outline-none ${amount ? 'bg-orange-500' : 'bg-gray-500 cursor-not-allowed'}`} disabled={!amount}
-        onClick={handleWithdraw}
-      >
-        Gửi yêu cầu rút tiền
-      </button>
+      <div className='mb-2'>
+        <PaymentChoices />
+      </div>
+
+      <div className='mt-10'>
+        <hr className="border-t border-gray-700 my-2" />
+        <div className='flex justify-between'>
+          <div className='px-2'>
+            <span>Bạn sẽ trả</span>
+            <p className="text-yellow-500 text-2xl"> 999,220 BTC</p>
+          </div>
+          <div className='flex justify-center p-4'>
+            <button onClick={() => setIsModalOpen(true)} className="bg-yellow-200 hover:bg-yellow-400 text-black font-semibold py-2 px-8 rounded-full">
+              Confirm
+            </button>
+          </div>
+        </div>
+        <ModalConfirm isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+      </div>
     </div>
   );
 };

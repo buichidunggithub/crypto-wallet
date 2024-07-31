@@ -26,7 +26,8 @@ const Withdraw: React.FC = () => {
   };
 
   const handleSend = () => {
-    setIsModalOpen(true);
+    // setIsModalOpen(true);
+    navigate('/withdraw-funds');
   };
 
   const handleReceive = () => {
@@ -47,29 +48,25 @@ const Withdraw: React.FC = () => {
     navigate('/'); // Quay lại trang trước đó
   };
 
-  const { coin } = location.state as { coin: Coin };
-
-  const handleBuy = (coin: Coin) => {
-    navigate('/deposit', { state: { coin } });
-  };
-
-  const handleSell = (coin: Coin) => {
-    navigate('/withdraw', { state: { coin } });
-  };
-
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleConfirmSend = () => {
     setIsModalOpen(false);
-    navigate('/buy-success', { state: { status: `Sending ${amount} BTC to recipient...`, amount: amount } });
+    navigate('/withdraw-funds');
+    // navigate('/buy-success', { state: { status: `Sending ${amount} BTC to recipient...`, amount: amount } });
   };
+  
+  const availableBalance = 0.8458; // Example available balance
 
   return (
-    <div className="p-4 w-full bg-gray-900 text-white shadow-md rounded-lg">
+    <div className="p-4 w-full bg-gray-900 text-white shadow-md rounded-lg min-h-screen">
       <div className="flex justify-between items-center mb-4">
-        <button onClick={handleBack} className="focus:outline-none">
-          <FaArrowLeft className="text-yellow-500" size={24} />
-        </button>
+        <div className='flex'>
+          <button onClick={handleBack} className="focus:outline-none">
+            <FaArrowLeft className="text-yellow-500" size={24} />
+          </button>
+          <div className='ml-4'>Sell</div>
+        </div>
         <h2 className="text-xl font-bold">Bitcoin</h2>
         {/* <button className="focus:outline-none">
           <FaCog className="text-yellow-500" size={24} />
@@ -139,7 +136,7 @@ const Withdraw: React.FC = () => {
       </div>
       <div className="flex space-x-4">
         <button onClick={handleSend} className={`flex-1 ${amount ? 'bg-yellow-500' : 'bg-gray-500 cursor-not-allowed'} text-black font-bold py-2 px-4 rounded focus:outline-none`} disabled={!amount}>Send</button>
-        <button onClick={handleReceive} className="flex-1 bg-gray-800 text-white font-bold py-2 px-4 rounded">Receive</button>
+        {/* <button onClick={handleReceive} className="flex-1 bg-gray-800 text-white font-bold py-2 px-4 rounded">Receive</button> */}
       </div>
 
       <Transactions/>

@@ -100,9 +100,9 @@ const App: React.FC = () => {
 
   return (
     <Router>
-      <div className="min-h-screen bg-gray-100">
+      <div className="h-full bg-gray-100">
         <Header />
-        <div className="p-4 flex justify-center items-center py-2">
+        <div className="pt-2 flex justify-center items-center min-h-screen">
           <Routes>
             <Route path="/" element={<CoinList coins={coins} balance={balance} />} />
             <Route path="/deposit" element={<Deposit />} />
